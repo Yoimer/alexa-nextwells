@@ -1,0 +1,1 @@
+web: gnunicorn main:app
