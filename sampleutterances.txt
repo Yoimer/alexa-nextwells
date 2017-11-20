@@ -1,6 +1,6 @@
 YesIntent yes
 YesIntent sure
 NoIntent no
-NoIntent no
+NoIntent nope
 AnswerIntent {first} {second} {third}
 AnswerIntent {first} {second} and {third}
