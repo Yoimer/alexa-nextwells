@@ -53,6 +53,12 @@ def answer(first, second, third):
     return statement(msg)
 
 
+@ask.intent("NoIntent")
+def no_intent():
+    bye_text = 'I am not sure why you asked me to run then, but okay... bye'
+    return statement(bye_text)
+
+
 if __name__ == '__main__':
 
     app.run(debug=True)
