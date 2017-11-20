@@ -4,6 +4,9 @@
       "intent": "YesIntent"
     },
     {
+      "intent": "NoIntent"
+    },
+    {
       "slots": [
         {
           "name": "first",
