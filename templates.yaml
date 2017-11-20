@@ -1,4 +1,4 @@
-welcome: Welcome to Nextwells, Long View Alexa demo app. I'm going to say three numbers for you to repeat backwards. Ready?
+welcome: Welcome to Nextwells, Long View Alexa demo app. I am going to show you some records from our database. Ready?
 
 round: Can you repeat the numbers {{ numbers|join(", ") }} backwards?
 
