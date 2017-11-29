@@ -1,4 +1,4 @@
-welcome: Welcome to Nextwells, Long View Alexa demo app. I am going to show you some records from our database. Ready?
+welcome: Welcome to Nextwells, Long View Alexa demo app for the Internet Of Things. Would you like to change state of NODEMCU?
 
 round: Can you repeat the numbers {{ numbers|join(", ") }} backwards?
 

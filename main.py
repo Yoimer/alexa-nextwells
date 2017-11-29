@@ -42,7 +42,9 @@ def getData():
 
      sess = requests.Session()
      
-     url = 'https://iot-php.000webhostapp.com/whitelist.txt'
+     #url = 'https://iot-php.000webhostapp.com/whitelist.txt'
+     
+     url = 'http://castillolk.com.ve/proyectos/sms/alexa.php?sw=7'
      
      data = sess.get(url)
      
@@ -50,7 +52,8 @@ def getData():
      
      print "next line is the statement"
      
-     return statement(data.content)
+     #return statement(data.content)
+     return statement('Action has been taken')
 
 
 
