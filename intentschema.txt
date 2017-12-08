@@ -1,27 +1,10 @@
 {
   "intents": [
     {
-      "intent": "YesIntent"
+      "intent": "OnIntent"
     },
     {
-      "intent": "NoIntent"
-    },
-    {
-      "slots": [
-        {
-          "name": "first",
-          "type": "AMAZON.NUMBER"
-        },
-        {
-          "name": "second",
-          "type": "AMAZON.NUMBER"
-        },
-        {
-          "name": "third",
-          "type": "AMAZON.NUMBER"
-        }
-      ],
-      "intent": "AnswerIntent"
+      "intent": "OffIntent"
     }
   ]
 }

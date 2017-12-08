@@ -28,59 +28,51 @@ logging.getLogger("flask_ask").setLevel(logging.DEBUG)
 
 @ask.launch
 
-def new_game():
+def launch_app():
 
     welcome_msg = render_template('welcome')
 
-    return question(welcome_msg)
+    return statement(welcome_msg)
     
 
+@ask.intent("TurnOnIntent")
 
-@ask.intent("YesIntent")
+def turn_on():
 
-def getData():
+    sess = requests.Session()
 
-     sess = requests.Session()
+    # sent ON to Nodemcu by sendind 7 to db on castillolk
+    url = 'http://castillolk.com.ve/proyectos/sms/alexa.php?sw=7'
      
-     #url = 'https://iot-php.000webhostapp.com/whitelist.txt'
+    data = sess.get(url)
      
-     url = 'http://castillolk.com.ve/proyectos/sms/alexa.php?sw=7'
+    print data.content
      
-     data = sess.get(url)
+    print "next line is the statement"
+
+    turn_on_msg = "Turning system ON... It might take a few seconds, please wait."
      
-     print data.content
-     
-     print "next line is the statement"
-     
-     #return statement(data.content)
-     return statement('Action has been taken')
+    return statement(turn_on_msg)
 
 
+@ask.intent("TurnOffIntent")
 
-'''@ask.intent("AnswerIntent", convert={'first': int, 'second': int, 'third': int})
-
-def answer(first, second, third):
-
-    winning_numbers = session.attributes['numbers']
-
-    if [first, second, third] == winning_numbers:
-
-        msg = render_template('win')
-
-    else:
-
-        msg = render_template('lose')
-
-    return statement(msg)'''
-
-
-@ask.intent("NoIntent")
-
-def no_intent():
+def turn_off():
     
-    bye_text = 'I am not sure why you asked me to run then, but okay... bye'
-    
-    return statement(bye_text)
+    sess = requests.Session()
+
+    # sent ON to Nodemcu by sendind 8 to db on castillolk
+    url = 'http://castillolk.com.ve/proyectos/sms/alexa.php?sw=8'
+     
+    data = sess.get(url)
+     
+    print data.content
+     
+    print "next line is the statement"
+
+    turn_on_msg = "Turning system OFF... It might take a few seconds, please wait."
+     
+    return statement(turn_on_msg)
     
 
 if __name__ == '__main__':
