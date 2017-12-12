@@ -36,7 +36,7 @@ def launch_app():
     return statement(welcome_msg)
     
 
-@ask.intent("TurnOnIntent")
+@ask.intent("OnIntent")
 
 def turn_on():
     
@@ -72,7 +72,7 @@ def turn_on():
 	    return statement(turn_on_msg)
 
 
-@ask.intent("TurnOffIntent")
+@ask.intent("OffIntent")
 
 def turn_off():
     
