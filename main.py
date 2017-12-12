@@ -41,6 +41,7 @@ def launch_app():
 def turn_on():
     
     global sw
+    time.sleep(2)
     
     if sw == '7':
 
@@ -76,7 +77,8 @@ def turn_on():
 def turn_off():
     
     global sw
-    
+    time.sleep(2)
+
     if sw == '8':
 
 	    turn_on_msg = "System is already turned off. Not action taken."
@@ -100,7 +102,6 @@ def turn_off():
         turn_on_msg = "Turning system OFF... It might take a few seconds, please wait."
 
         sw = '8'
-        
         print(turn_on_msg)
      
         return statement(turn_on_msg)
