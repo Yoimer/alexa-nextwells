@@ -25,6 +25,7 @@ ask = Ask(app, "/")
 
 logging.getLogger("flask_ask").setLevel(logging.DEBUG)
 
+sw = '0'
 
 @ask.launch
 
@@ -38,41 +39,71 @@ def launch_app():
 @ask.intent("TurnOnIntent")
 
 def turn_on():
+    
+    global sw
+    
+    if sw == '7':
 
-    sess = requests.Session()
+	    turn_on_msg = "System is already turned on. Not action taken."
 
-    # sent ON to Nodemcu by sendind 7 to db on castillolk
-    url = 'http://castillolk.com.ve/proyectos/sms/alexa.php?sw=7'
-     
-    data = sess.get(url)
-     
-    print data.content
-     
-    print "next line is the statement"
+	    print(turn_on_msg)
+		
+	    return statement(turn_on_msg)
 
-    turn_on_msg = "Turning system ON... It might take a few seconds, please wait."
+    else:
+	    sess = requests.Session()
+
+	    # sent ON to Nodemcu by sendind 7 to db on castillolk
+	    url = 'http://castillolk.com.ve/proyectos/sms/alexa.php?sw=7'
      
-    return statement(turn_on_msg)
+	    data = sess.get(url)
+     
+	    print data.content
+     
+	    print "next line is the statement"
+
+	    turn_on_msg = "Turning system ON... It might take a few seconds, please wait."
+
+	    sw = '7'
+        
+	    print(turn_on_msg)
+		
+	    return statement(turn_on_msg)
 
 
 @ask.intent("TurnOffIntent")
 
 def turn_off():
     
-    sess = requests.Session()
+    global sw
+    
+    if sw == '8':
 
-    # sent ON to Nodemcu by sendind 8 to db on castillolk
-    url = 'http://castillolk.com.ve/proyectos/sms/alexa.php?sw=8'
-     
-    data = sess.get(url)
-     
-    print data.content
-     
-    print "next line is the statement"
+	    turn_on_msg = "System is already turned off. Not action taken."
 
-    turn_on_msg = "Turning system OFF... It might take a few seconds, please wait."
+	    print(turn_on_msg)
+
+	    return statement(turn_on_msg)
+
+    else:
+        sess = requests.Session()
+
+        # sent ON to Nodemcu by sendind 8 to db on castillolk
+        url = 'http://castillolk.com.ve/proyectos/sms/alexa.php?sw=8'
      
-    return statement(turn_on_msg)
+        data = sess.get(url)
+     
+        print data.content
+     
+        print "next line is the statement"
+
+        turn_on_msg = "Turning system OFF... It might take a few seconds, please wait."
+
+        sw = '8'
+        
+        print(turn_on_msg)
+     
+        return statement(turn_on_msg)
     
 
 if __name__ == '__main__':
