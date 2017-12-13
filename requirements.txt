@@ -8,13 +8,14 @@ cryptography==2.1.2
 enum34==1.1.6
 Flask==0.12.1
 Flask-Ask==0.9.7
-gunicorn==19.7.1
+Flask-MySQL==1.4.0
 idna==2.6
 ipaddress==1.0.18
 itsdangerous==0.24
 Jinja2==2.9.6
 MarkupSafe==1.0
 pycparser==2.18
+PyMySQL==0.7.11
 pyOpenSSL==17.0.0
 python-dateutil==2.6.1
 PyYAML==3.12
