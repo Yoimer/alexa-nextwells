@@ -28,7 +28,7 @@ ask = Ask(app, "/")
 
 logging.getLogger("flask_ask").setLevel(logging.DEBUG)
 
-mysql = MySQL()
+'''mysql = MySQL()
 app = Flask(__name__)
 app.config['MYSQL_DATABASE_USER'] = 'ragnar'
 app.config['MYSQL_DATABASE_PASSWORD'] = 'lothbrok'
@@ -43,9 +43,9 @@ cursor.execute("SELECT * FROM status  WHERE id='1'")
 data = cursor.fetchone()
 print data
 print data[1]
-print type (str(data[1]))
+print type (str(data[1]))'''
 
-sw = '0'
+#sw = '0'
 
 @ask.launch
 
@@ -60,18 +60,27 @@ def launch_app():
 
 def turn_on():
     
-    global sw
-    time.sleep(2)
+    #global sw
+    #time.sleep(2)
     
-    if sw == '7':
+	sess = requests.Session()
+
+	url = 'http://castillolk.com.ve/proyectos/sms/alexa.php?'
+     
+	data = sess.get(url)
+     
+	print data.content
+
+    #if sw == '7':
+	if 'ON' in data.content:
 
 	    turn_on_msg = "System is already turned on. Not action taken."
 
 	    print(turn_on_msg)
-		
+
 	    return statement(turn_on_msg)
 
-    else:
+	else:
 	    sess = requests.Session()
 
 	    # sent ON to Nodemcu by sendind 7 to db on castillolk
@@ -84,8 +93,6 @@ def turn_on():
 	    print "next line is the statement"
 
 	    turn_on_msg = "Turning system ON... It might take a few seconds, please wait."
-
-	    sw = '7'
         
 	    print(turn_on_msg)
 		
@@ -96,19 +103,28 @@ def turn_on():
 
 def turn_off():
     
-    global sw
-    time.sleep(2)
+    #global sw
+    #time.sleep(2)
 
-    if sw == '8':
+	sess = requests.Session()
 
-	    turn_on_msg = "System is already turned off. Not action taken."
+	url = 'http://castillolk.com.ve/proyectos/sms/alexa.php?'
+     
+	data = sess.get(url)
+     
+	print data.content
 
-	    print(turn_on_msg)
+    #if sw == '8':
+	if 'OFF' in data.content:
 
-	    return statement(turn_on_msg)
+	    turn_off_msg = "System is already turned off. Not action taken."
 
-    else:
-        sess = requests.Session()
+	    print(turn_off_msg)
+
+	    return statement(turn_off_msg)
+
+	else:
+	    sess = requests.Session()
 
         # sent ON to Nodemcu by sendind 8 to db on castillolk
         url = 'http://castillolk.com.ve/proyectos/sms/alexa.php?sw=8'
@@ -121,7 +137,7 @@ def turn_off():
 
         turn_on_msg = "Turning system OFF... It might take a few seconds, please wait."
 
-        sw = '8'
+        #sw = '8'
         print(turn_on_msg)
      
         return statement(turn_on_msg)
