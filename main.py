@@ -13,12 +13,6 @@ import json
 
 import requests
 
-import time
-
-import unidecode
-
-from flaskext.mysql import MySQL
-
 ######################################
 
 
@@ -27,25 +21,6 @@ app = Flask(__name__)
 ask = Ask(app, "/")
 
 logging.getLogger("flask_ask").setLevel(logging.DEBUG)
-
-'''mysql = MySQL()
-app = Flask(__name__)
-app.config['MYSQL_DATABASE_USER'] = 'ragnar'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'lothbrok'
-app.config['MYSQL_DATABASE_DB'] = 'alexa'
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-mysql.init_app(app)
-
-cursor = mysql.connect().cursor()
-#cursor.execute("SELECT * FROM status")
-cursor.execute("SELECT * FROM status  WHERE id='1'")
-#data = cursor.fetchall()
-data = cursor.fetchone()
-print data
-print data[1]
-print type (str(data[1]))'''
-
-#sw = '0'
 
 @ask.launch
 
